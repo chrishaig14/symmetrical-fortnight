@@ -6,7 +6,6 @@ data Item a = Single a | Multiple Int a
   deriving (Show)
 
 decode :: [Item a] -> [a]
-decode x = concatMap itemDecode x
-  where
-    itemDecode (Single y) = [y]
-    itemEncode (Multiple n y) = replicate n y
+decode = concatMap itemDecode
+  where itemDecode (Single y) = [y]
+        itemDecode (Multiple n y) = replicate n y
